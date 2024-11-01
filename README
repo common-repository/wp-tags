@@ -1,0 +1,65 @@
+== Tags Plugin ==
+
+= Introduction =
+
+Version 0.2.1
+Compatibility: Wordpress 1.5
+Plugin URI: http://boke.name/c/wordpress-tags
+Description: A plugin that tag each entry of the blog, and give a tag access method and tag list.
+Author: Felix Wong
+Author Email: felix[at]cenrik[dot]net
+License: GPLv2 or later
+
+= Installation =
+
+* Uncompress wp-tags-x.x.x.tar.gz, a wp-tags/ directory is created. It contains README (this file), tags.patch and a wp-content/ directory.
+* Copy wp-tags/wp-content/* to /path/to/your/wp/wp-content, including plugins/tags.php and themes/default/tags.php. The former one is Tags plugin for WP. The latter one is Tags template for the '''default''' theme in WP 1.5. You may have a look at it to create your own template.
+* Apply tags.patch in /path/to/your/wp
+{{{
+	patch -p1 < tags.php
+}}}
+It includes fields in the simple post form and the advanced editing form.
+* Activate your plugin in WP plugins management page. Then go to Manage/Tags page. Tags plugin will create the tags table for you automatically, if you haven't got one.
+
+= Use =
+
+* A field named Tags is next to Title field in ''Write Post'' page. You can freely add any tags you want into the field (just like del.icio.us). Tags are not predefined and they can be created as many as you like. When no post is attached to a tag, this tag will not exist any more.
+* Categories do not conflict with Tags.
+* Tag access method
+ * if mod_rewrite is loaded:
+ {{{
+ 	http://your.blog.site/tags/tag1+tag2+tag3
+ }}}
+ * if mod_rewrite is not loaded:
+ {{{
+ 	http://your.blog.site/index.php?tags=tag1+tag2+tag3
+ }}}
+ The URL means you access posts which have tag1 '''and''' tag2 '''and''' tag3.
+
+= Template API =
+
+* To get the tags specified in the URL:
+{{{
+	function tags_title($delimeter="+", $target="_self")
+}}}
+* To determine whether a post has tags, in the_post() context:
+{{{
+	function have_tags()
+}}}
+* To get the tags of a post, in the_post() context:
+{{{
+	function the_tags($delimeter=", ", $echo = false, $link = true, $target="_self")
+}}}
+* To list all tags of the blog:
+{{{
+	function list_tags($delimeter=", ", $sort = true, $desc = true, $count = 12)
+}}}
+* (Experimental) To create a tags impression image: (need GD2 support, in PHP 4.3.x)
+{{{
+	function tag_list_image($sort = true, $desc = true, $count = 12)
+}}}
+
+= Acknowledgement =
+
+Great thanks to my girl friend Sharon. She supports me a lot. :-)
+Thanks to Matt for the trac system.

@@ -1,0 +1,56 @@
+diff -r -C 3 wordpress.old/wp-admin/edit-form-advanced.php wordpress/wp-admin/edit-form-advanced.php
+*** wordpress.old/wp-admin/edit-form-advanced.php	Sat Feb 12 17:25:54 2005
+--- wordpress/wp-admin/edit-form-advanced.php	Wed Mar  9 15:08:26 2005
+***************
+*** 82,87 ****
+--- 82,94 ----
+        <legend><a href="http://wordpress.org/docs/reference/post/#post_password" title="<?php _e('Help on post password') ?>"><?php _e('Post Password') ?></a></legend> 
+  	  <div><input name="post_password" type="text" size="13" id="post_password" value="<?php echo $post_password ?>" /></div>
+      </fieldset>
++     
++     <!-- Tags Plugin Begin -->
++     <fieldset id="titlediv">
++     	<legend><a href="http://boke.name/c/blog/wordpress-tags"><?php _e('Tags'); ?></a></legend>
++ 	<div><input type="text" tabindex="2" name="post_tags" size="30" value="<?php echo $edited_post_tags; ?>" id="tags" /></div>
++     </fieldset>
++     <!-- Tags End -->
+  
+  <br />
+  <fieldset id="postexcerpt">
+diff -r -C 3 wordpress.old/wp-admin/edit-form.php wordpress/wp-admin/edit-form.php
+*** wordpress.old/wp-admin/edit-form.php	Fri Feb 11 11:32:24 2005
+--- wordpress/wp-admin/edit-form.php	Wed Mar  9 15:08:13 2005
+***************
+*** 25,30 ****
+--- 25,37 ----
+  	  <div><input type="text" name="post_title" size="30" tabindex="1" value="<?php echo $edited_post_title; ?>" id="title" /></div>
+      </fieldset>
+  
++     <!-- Tags Plugin Begin -->
++     <fieldset id="titlediv">
++     	<legend><a href="http://boke.name/c/blog/wordpress-tags"><?php _e('Tags'); ?></a></legend>
++ 	<div><input type="text" tabindex="2" name="post_tags" size="30" value="<?php echo $edited_post_tags; ?>" id="tags" /></div>
++     </fieldset>
++     <!-- Tags End -->
++ 
+      <fieldset id="categorydiv">
+        <legend><a href="http://wordpress.org/docs/reference/post/#category" title="<?php _e('Help on categories') ?>"><?php _e('Categories') ?></a></legend> 
+  	  <div><?php dropdown_categories($default_post_cat); ?></div>
+diff -r -C 3 wordpress.old/wp-admin/edit-page-form.php wordpress/wp-admin/edit-page-form.php
+*** wordpress.old/wp-admin/edit-page-form.php	Mon Feb 14 17:46:08 2005
+--- wordpress/wp-admin/edit-page-form.php	Wed Mar  9 15:08:57 2005
+***************
+*** 65,70 ****
+--- 65,76 ----
+          </select>
+  	  </div>
+      </fieldset>
++     <!-- Tags Plugin Begin -->
++     <fieldset id="titlediv">
++     	<legend><a href="http://boke.name/c/blog/wordpress-tags"><?php _e('Tags'); ?></a></legend>
++ 	<div><input tabindex="2" type="text" name="post_tags" size="30" value="<?php echo $edited_post_tags; ?>" id="tags" /></div>
++     </fieldset>
++     <!-- Tags End -->
+  <fieldset id="postdiv">
+      <legend><?php _e('Page Content') ?></legend>
+  <?php the_quicktags(); ?>
